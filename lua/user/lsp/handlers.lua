@@ -33,6 +33,14 @@ M.setup = function()
     vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {border = "rounded"})
 end
 
+local function lsp_options(bufnr)
+    local set_buf_opt = function(opt, value)
+        vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+    end
+
+    set_buf_opt('omnifunc', 'v:lua.vim.lsp.omnifunc')
+end
+
 local function lsp_keymaps(bufnr)
     local opts = {noremap = true, silent = true}
     local keymap = vim.api.nvim_buf_set_keymap
@@ -59,6 +67,7 @@ local function lsp_keymaps(bufnr)
 end
 
 M.on_attach = function(client, bufnr)
+    lsp_options(bufnr)
     lsp_keymaps(bufnr)
 
     local status_ok, illuminate = pcall(require, "illuminate")
