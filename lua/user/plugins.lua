@@ -30,6 +30,9 @@ return packer.startup(function(use)
     -- Package management
     use 'wbthomason/packer.nvim'
 
+    -- Project management
+    use "ahmedkhalf/project.nvim"
+
     -- NVIM Utilities
     use 'nvim-lua/plenary.nvim'
     use 'lewis6991/impatient.nvim'
@@ -41,16 +44,19 @@ return packer.startup(function(use)
     -- Visualization
     use 'rrethy/vim-illuminate'
     use 'lukas-reineke/indent-blankline.nvim'
+    use 'kyazdani42/nvim-web-devicons'
     use 'nvim-treesitter/nvim-treesitter'
 
     -- Formatting
-    use 'junegunn/vim-easy-align'
     use 'rhysd/vim-clang-format'
     use {'averms/black-nvim', run = ':UpdateRemotePlugins'}
+    use 'junegunn/vim-easy-align'
     use 'windwp/nvim-autopairs'
+    use 'tpope/vim-surround'
+    use 'justinmk/vim-sneak'
 
     -- Tree view
-    use 'preservim/nerdtree'
+    use 'nvim-tree/nvim-tree.lua'
 
     -- Terminals
     use {'akinsho/toggleterm.nvim', tag = '*'}
@@ -58,15 +64,18 @@ return packer.startup(function(use)
     -- Git
     use 'tpope/vim-fugitive'
 
-    -- FZF
-    use {'junegunn/fzf', run = ':call fzf#install()'}
-    use 'junegunn/fzf.vim'
+    -- Searching
+    use {
+        'nvim-telescope/telescope.nvim',
+        requires = { {'nvim-lua/plenary.nvim'},
+                     {'BurntSushi/ripgrep'} }
+    }
 
     -- LSP
     use 'neovim/nvim-lspconfig'
     use 'nvim-lua/lsp_extensions.nvim'
 
-    -- cmp
+    -- Completion
     use 'hrsh7th/nvim-cmp'
     use 'hrsh7th/cmp-buffer'
     use 'hrsh7th/cmp-cmdline'

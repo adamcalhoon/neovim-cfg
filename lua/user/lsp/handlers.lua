@@ -36,22 +36,26 @@ end
 local function lsp_keymaps(bufnr)
     local opts = {noremap = true, silent = true}
     local keymap = vim.api.nvim_buf_set_keymap
-    keymap(bufnr, 'n', '1gD', ':lua vim.lsp.buf.type_definition()<CR>', opts)
-    keymap(bufnr, 'n', '<C-]>', ':lua vim.lsp.buf.definition()<CR>', opts)
-    keymap(bufnr, 'n', '<leader>rn', ':lua vim.lsp.buf.rename()<CR>', opts)
-    keymap(bufnr, 'n', 'g0', ':lua vim.lsp.buf.document_symbol()<CR>', opts)
-    keymap(bufnr, 'n', 'gD', ':lua vim.lsp.buf.implementation()<CR>', opts)
-    keymap(bufnr, 'n', 'gS', ':lua vim.lsp.buf.signature_help()<CR>', opts)
-    keymap(bufnr, 'n', 'gW', ':lua vim.lsp.buf.workspace_symbol()<CR>', opts)
-    keymap(bufnr, 'n', 'ga', ':lua vim.lsp.buf.code_action()<CR>', opts)
-    keymap(bufnr, 'n', 'gd', ':lua vim.lsp.buf.declaration()<CR>', opts)
-    keymap(bufnr, 'n', 'gf', ':lua vim.lsp.buf.format{ async = true }<CR>', opts)
-    keymap(bufnr, 'n', 'gh', ':lua vim.lsp.buf.hover()<CR>', opts)
-    keymap(bufnr, 'n', 'gr', ':lua vim.lsp.buf.references()<CR>', opts)
+
     keymap(bufnr, 'n', 'go', ':lua vim.diagnostic.open_float()<CR>', opts)
     keymap(bufnr, 'n', 'g[', ':lua vim.diagnostic.goto_prev{buffer = 0}<CR>', opts)
     keymap(bufnr, 'n', 'g]', ':lua vim.diagnostic.goto_next{buffer = 0}<CR>', opts)
+
+    keymap(bufnr, 'n', '<C-]>', ':lua vim.lsp.buf.definition()<CR>', opts)
+    keymap(bufnr, 'n', '<leader>la', ':lua vim.lsp.buf.code_action()<CR>', opts)
+    keymap(bufnr, 'n', '<leader>ld', ':lua vim.lsp.buf.definition()<CR>', opts)
+    keymap(bufnr, 'n', '<leader>lD', ':lua vim.lsp.buf.declaration()<CR>', opts)
+    keymap(bufnr, 'n', '<leader>lf', ':lua vim.lsp.buf.format{ async = true }<CR>', opts)
+    keymap(bufnr, 'n', '<leader>lh', ':lua vim.lsp.buf.hover()<CR>', opts)
+    keymap(bufnr, 'n', '<leader>li', ':lua vim.lsp.buf.implementation()<CR>', opts)
+    keymap(bufnr, 'n', '<leader>lo', ':lua vim.diagnostic.open_float()<CR>', opts)
     keymap(bufnr, 'n', '<leader>lq', ':lua vim.diagnostic.setloclist()<CR>', opts)
+    keymap(bufnr, 'n', '<leader>lr', ':lua vim.lsp.buf.references()<CR>', opts)
+    keymap(bufnr, 'n', '<leader>lrn', ':lua vim.lsp.buf.rename()<CR>', opts)
+    keymap(bufnr, 'n', '<leader>ls', ':lua vim.lsp.buf.signature_help()<CR>', opts)
+    keymap(bufnr, 'n', '<leader>lS', ':lua vim.lsp.buf.document_symbol()<CR>', opts)
+    keymap(bufnr, 'n', '<leader>ltd', ':lua vim.lsp.buf.type_definition()<CR>', opts)
+    keymap(bufnr, 'n', '<leader>lW', ':lua vim.lsp.buf.workspace_symbol()<CR>', opts)
 end
 
 M.on_attach = function(client, bufnr)

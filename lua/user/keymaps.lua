@@ -25,6 +25,9 @@ keymap('n', '<C-j>', '<C-w>j', opts)
 keymap('n', '<C-k>', '<C-w>k', opts)
 keymap('n', '<C-l>', '<C-w>l', opts)
 
+-- vim-easy-align
+keymap('n', 'ga', '<Plug>(vim-easy-align)', opts)
+
 -- Resize with arrows
 keymap('n', '<C-Up>', ':resize -2<CR>', opts)
 keymap('n', '<C-Down>', ':resize +2<CR>', opts)
@@ -39,16 +42,30 @@ keymap('n', '<S-h>', ':bprevious<CR>', opts)
 keymap('n', '<A-j>', '<Esc>:m .+1<CR>==gi', opts)
 keymap('n', '<A-k>', '<Esc>:m .-2<CR>==gi', opts)
 
--- NERDTree
-keymap('n', 'gt', ':NERDTreeToggleVCS %<CR>', opts)
-keymap('n', 'gT', ':NERDTreeToggle ~/dev/forge_os/ws/ipc/src<CR>', opts)
-keymap('n', 'gb', ':NERDTreeToggle %<CR>', opts)
+-- telescope.nvim
+local telescope_ok, telescope = pcall(require, 'telescope.builtin')
+if telescope_ok then
+    vim.keymap.set('n', '<leader>ff', telescope.find_files, {})
+    vim.keymap.set('n', '<leader>fg', telescope.live_grep, {})
+    vim.keymap.set('n', '<leader>fb', telescope.buffers, {})
+    vim.keymap.set('n', '<leader>fh', telescope.help_tags, {})
+
+    -- requires project.nvim
+    keymap        ('n', '<leader>fp', ':Telescope projects<CR>', opts)
+end
+
+-- nvim-tree.lua
+keymap('n', '<leader>tt', ':NvimTreeToggle<CR>', opts)
+keymap('n', '<leader>tw', ':NvimTreeToggle ${FORGE_WS}/ws/ipc/src<CR>', opts)
 
 -- Tidy up whitespace
 keymap('n', '<leader>w', [[:%s#\s\+$##e<CR>]], {silent = true})
 
--- Toggle terminal open
-keymap('n', 'gc', ':ToggleTerm<CR>', opts)
+-- toggleterm
+keymap('n', '<leader>ct', ':ToggleTerm<CR>', opts)
+
+-- Toggle numbering
+keymap('n', '<leader>nt', ':set number!<CR>', opts)
 
 -- Insert --
 -- Press jk fast to exit insert mode
@@ -75,3 +92,6 @@ keymap('x', 'J', [[:move '>+1<CR>gv-gv]], opts)
 keymap('x', 'K', [[:move '<-2<CR>gv-gv]], opts)
 keymap('x', '<A-j>', [[:move '>+1<CR>gv-gv]], opts)
 keymap('x', '<A-k>', [[:move '<-2<CR>gv-gv]], opts)
+
+-- vim-easy-align
+keymap('x', 'ga', '<Plug>(vim-easy-align)', opts)

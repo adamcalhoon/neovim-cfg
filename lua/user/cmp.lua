@@ -70,21 +70,23 @@ cmp.setup {
         end, {"i", "s"})
     }),
     formatting = {
-        fields = {"kind", "abbr", "menu"}
-        --        format = function(entry, vim_item)
-        --            vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
-        --            vim_item.menu = ({
-        --                nvim_lsp = "[LSP]",
-        --                nvim_lsp_signature_help = "[LSP]",
-        --                vsnip = "[Snippet]",
-        --                buffer = "[Buffer]",
-        --                path = "[Path]"
-        --            })[entry.source.name]
-        --            return vim_item
-        --        end
+        fields = {"kind", "abbr", "menu"},
+        format = function(entry, vim_item)
+            vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
+            vim_item.menu = ({
+                nvim_lsp = "[LSP]",
+                nvim_lsp_signature_help = "[LSP]",
+                vsnip = "[Snippet]",
+                buffer = "[Buffer]",
+                path = "[Path]"
+            })[entry.source.name]
+            return vim_item
+        end
     },
-    sources = cmp.config.sources({{name = 'nvim_lsp'}, {name = 'nvim_lsp_signature_help'}, {name = 'vsnip'}},
-                                 {{name = 'buffer'}}),
+    sources = cmp.config.sources({
+        {name = 'nvim_lsp'},
+        {name = 'nvim_lsp_signature_help'},
+        {name = 'vsnip'}}),
     confirm_opts = {behavior = cmp.ConfirmBehavior.Replace, select = false},
     window = {completion = cmp.config.window.bordered(), documentation = cmp.config.window.bordered()},
     experimental = {ghost_text = false, native_menu = false}
