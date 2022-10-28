@@ -15,7 +15,7 @@ rt.setup {
     -- see https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#rust_analyzer
     server = {
         on_attach = function(client, buffer)
-            require("user.lsp.handlers").on_attach(client, buffer);
+            require("user.lsp.handlers").on_attach(client, buffer)
 
             local opts = {buffer = buffer, silent = true}
             local keymap = vim.keymap.set
