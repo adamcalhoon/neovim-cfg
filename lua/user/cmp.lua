@@ -87,6 +87,18 @@ cmp.setup {
         {name = 'nvim_lsp'},
         {name = 'nvim_lsp_signature_help'},
         {name = 'vsnip'}}),
+    sorting = {
+        comparators = {
+            cmp.config.compare.offset,
+            cmp.config.compare.exact,
+            cmp.config.compare.recently_used,
+            require("clangd_extensions.cmp_scores"),
+            cmp.config.compare.kind,
+            cmp.config.compare.sort_text,
+            cmp.config.compare.length,
+            cmp.config.compare.order,
+        }
+    },
     confirm_opts = {behavior = cmp.ConfirmBehavior.Replace, select = false},
     window = {completion = cmp.config.window.bordered(), documentation = cmp.config.window.bordered()},
     experimental = {ghost_text = false, native_menu = false}
@@ -100,15 +112,3 @@ cmp.setup.cmdline(':', {
     mapping = cmp.mapping.preset.cmdline(),
     sources = cmp.config.sources({{name = 'path'}}, {{name = 'cmdline'}})
 })
-
--- -- Set up lspconfig.
--- local capabilities = require('cmp_nvim_lsp').default_capabilities()
--- require('lspconfig')['clangd'].setup {
---     capabilities = capabilities
--- }
--- require('lspconfig')['rust_analyzer'].setup {
---     capabilities = capabilities
--- }
--- require('lspconfig')['pyright'].setup {
---     capabilities = capabilities
--- }

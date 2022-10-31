@@ -42,18 +42,17 @@ return packer.startup(function(use)
     use 'olimorris/onedarkpro.nvim'
 
     -- Visualization
-    use 'rrethy/vim-illuminate'
-    use 'lukas-reineke/indent-blankline.nvim'
-    use 'kyazdani42/nvim-web-devicons'
-    use 'nvim-treesitter/nvim-treesitter'
+    use 'rrethy/vim-illuminate' -- illuminate word under cursor
+    use 'lukas-reineke/indent-blankline.nvim' -- add indent guidelines
+    use 'nvim-treesitter/nvim-treesitter' -- improved syntax highlights
+    use 'kyazdani42/nvim-web-devicons' -- fancy icons
+    use 'microsoft/vscode-codicons' -- more fancy icons
 
     -- Formatting
-    use 'rhysd/vim-clang-format'
-    use {'averms/black-nvim', run = ':UpdateRemotePlugins'}
     use 'junegunn/vim-easy-align'
     use 'windwp/nvim-autopairs'
     use 'tpope/vim-surround'
-    use 'justinmk/vim-sneak'
+    use "jose-elias-alvarez/null-ls.nvim"
 
     -- Tree view
     use 'nvim-tree/nvim-tree.lua'
@@ -70,6 +69,7 @@ return packer.startup(function(use)
         requires = { {'nvim-lua/plenary.nvim'},
                      {'BurntSushi/ripgrep'} }
     }
+    use 'justinmk/vim-sneak'
 
     -- LSP
     use 'neovim/nvim-lspconfig'
@@ -87,6 +87,9 @@ return packer.startup(function(use)
     use 'hrsh7th/cmp-vsnip'
     use 'hrsh7th/vim-vsnip'
     use 'rafamadriz/friendly-snippets'
+
+    -- C/C++
+    use 'p00f/clangd_extensions.nvim'
 
     -- Rust
     use 'rust-lang/rust.vim'

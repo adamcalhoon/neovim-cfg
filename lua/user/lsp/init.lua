@@ -4,7 +4,7 @@ if not status_ok then return end
 require("user.lsp.handlers").setup()
 
 -- LSP servers with standard configuration
-local servers = {'clangd', 'pyright'}
+local servers = {'pyright', 'tsserver'}
 
 local opts = {}
 for _, server in pairs(servers) do
@@ -21,5 +21,7 @@ for _, server in pairs(servers) do
     lspconfig[server].setup(opts)
 end
 
--- LSP servers with non-standard configuration
+-- LSP servers with supplemental configuration
+require("user.lsp.clangd_extensions")
 require("user.lsp.rust-tools")
+require("user.lsp.null-ls")

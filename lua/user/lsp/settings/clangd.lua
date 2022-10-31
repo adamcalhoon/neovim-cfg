@@ -12,6 +12,8 @@ end
 
 return {
     cmd = {'clangd', '--background-index'},
+    on_attach = require("user.lsp.handlers").on_attach,
+    capabilities = require("user.lsp.handlers").capabilities,
     on_new_config = function(new_config)
         local root_dir = new_config.root_dir(vim.api.nvim_buf_get_name(0), vim.api.nvim_get_current_buf())
 

@@ -14,6 +14,5 @@ require 'user.nvim-tree'
 require 'user.telescope'
 require 'user.autopairs'
 require 'user.project'
-require 'user.black'
 
 -- require 'user.gitsigns'
