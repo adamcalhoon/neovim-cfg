@@ -88,6 +88,11 @@ return packer.startup(function(use)
         config = function() require('cmp_git').setup() end
     }
 
+    use {
+        'numToStr/Comment.nvim',
+        config = function() require('Comment').setup() end
+    }
+
     -- Snippets
     use 'hrsh7th/cmp-vsnip'
     use 'hrsh7th/vim-vsnip'
