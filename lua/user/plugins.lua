@@ -82,6 +82,11 @@ return packer.startup(function(use)
     use 'hrsh7th/cmp-path'
     use 'hrsh7th/cmp-nvim-lsp'
     use 'hrsh7th/cmp-nvim-lsp-signature-help'
+    use {
+        'petertriho/cmp-git',
+        requires = 'nvim-lua/plenary.nvim',
+        config = function() require('cmp_git').setup() end
+    }
 
     -- Snippets
     use 'hrsh7th/cmp-vsnip'

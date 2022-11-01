@@ -44,6 +44,7 @@ local kind_icons = {
 
 cmp.setup {
     snippet = {expand = function(args) vim.fn["vsnip#anonymous"](args.body) end},
+    preselect = cmp.PreselectMode.Item,
     mapping = cmp.mapping.preset.insert({
         ['<C-b>'] = cmp.mapping.scroll_docs(-4),
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
@@ -86,13 +87,15 @@ cmp.setup {
     sources = cmp.config.sources({
         {name = 'nvim_lsp'},
         {name = 'nvim_lsp_signature_help'},
-        {name = 'vsnip'}}),
+        {name = 'vsnip'},
+        {name = 'buffer'}}),
     sorting = {
         comparators = {
             cmp.config.compare.offset,
             cmp.config.compare.exact,
-            cmp.config.compare.recently_used,
+            cmp.config.compare.score,
             require("clangd_extensions.cmp_scores"),
+            cmp.config.compare.recently_used,
             cmp.config.compare.kind,
             cmp.config.compare.sort_text,
             cmp.config.compare.length,
@@ -111,4 +114,9 @@ cmp.setup.cmdline({'/', '?'}, {mapping = cmp.mapping.preset.cmdline(), sources =
 cmp.setup.cmdline(':', {
     mapping = cmp.mapping.preset.cmdline(),
     sources = cmp.config.sources({{name = 'path'}}, {{name = 'cmdline'}})
+})
+
+-- Set configuration for specific filetype.
+cmp.setup.filetype('gitcommit', {
+    sources = cmp.config.sources({{name = 'cmp_git'}}, {{name = 'buffer'}})
 })
