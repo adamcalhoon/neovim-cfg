@@ -40,6 +40,7 @@ return packer.startup(function(use)
     -- Colorschemes
     use 'lifepillar/vim-solarized8'
     use 'olimorris/onedarkpro.nvim'
+    use 'EdenEast/nightfox.nvim'
 
     -- Visualization
     use 'rrethy/vim-illuminate' -- illuminate word under cursor

@@ -1,4 +1,4 @@
-local colorscheme = 'onedarkpro'
+local colorscheme = 'nightfox'
 
 vim.cmd [[
   augroup _colorscheme_overrides
