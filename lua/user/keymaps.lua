@@ -26,7 +26,7 @@ keymap('n', '<C-k>', '<C-w>k', opts)
 keymap('n', '<C-l>', '<C-w>l', opts)
 
 -- vim-easy-align
-keymap('n', 'ga', '<Plug>(vim-easy-align)', opts)
+keymap('n', 'ga', '<Plug>(EasyAlign)', opts)
 
 -- Resize with arrows
 keymap('n', '<C-Up>', ':resize -2<CR>', opts)
@@ -94,4 +94,4 @@ keymap('x', '<A-j>', [[:move '>+1<CR>gv-gv]], opts)
 keymap('x', '<A-k>', [[:move '<-2<CR>gv-gv]], opts)
 
 -- vim-easy-align
-keymap('x', 'ga', '<Plug>(vim-easy-align)', opts)
+keymap('x', 'ga', '<Plug>(EasyAlign)', opts)
