@@ -92,6 +92,9 @@ return packer.startup(function(use)
         requires = 'nvim-lua/plenary.nvim',
         config = function() require('cmp_git').setup() end
     }
+    use {
+        'ms-jpq/coq_nvim'
+    }
 
     use {
         'numToStr/Comment.nvim',

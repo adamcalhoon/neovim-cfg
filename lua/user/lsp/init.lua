@@ -18,7 +18,7 @@ for _, server in pairs(servers) do
     local require_ok, conf_opts = pcall(require, "user.lsp.settings." .. server)
     if require_ok then opts = vim.tbl_deep_extend("force", conf_opts, opts) end
 
-    lspconfig[server].setup(opts)
+    lspconfig[server].setup(require('coq').lsp_ensure_capabilities(opts))
 end
 
 -- LSP servers with supplemental configuration

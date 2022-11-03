@@ -13,7 +13,7 @@ rt.setup {
     -- all the opts to send to nvim-lspconfig
     -- these override the defaults set by rust-tools.nvim
     -- see https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#rust_analyzer
-    server = {
+    server = require('coq').lsp_ensure_capabilities{
         on_attach = function(client, buffer)
             require("user.lsp.handlers").on_attach(client, buffer)
 
