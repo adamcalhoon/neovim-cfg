@@ -48,6 +48,10 @@ return packer.startup(function(use)
     use 'nvim-treesitter/nvim-treesitter' -- improved syntax highlights
     use 'kyazdani42/nvim-web-devicons' -- fancy icons
     use 'microsoft/vscode-codicons' -- more fancy icons
+    use {
+        'nvim-lualine/lualine.nvim',
+        requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+    }
 
     -- Formatting
     use 'junegunn/vim-easy-align'
