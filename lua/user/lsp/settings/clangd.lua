@@ -11,7 +11,7 @@ local function get_catkin_build_path()
 end
 
 return {
-    cmd = {'clangd', '--background-index'},
+    cmd = {'clangd', '--background-index', '--completion-style=detailed'},
     on_attach = require("user.lsp.handlers").on_attach,
     capabilities = require("user.lsp.handlers").capabilities,
     on_new_config = function(new_config)

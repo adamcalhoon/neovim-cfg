@@ -57,7 +57,7 @@ cmp.setup {
             elseif vim.fn["vsnip#available"](1) == 1 then
                 feedkey("<Plug>(vsnip-expand-or-jump)", "")
             elseif has_words_before() then
-                cmp.complete()
+                cmp.complete_common_string()
             else
                 fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
             end
@@ -84,10 +84,17 @@ cmp.setup {
             return vim_item
         end
     },
-    sources = cmp.config.sources({
-        {name = 'nvim_lsp'},
-        {name = 'nvim_lsp_signature_help'},
-        {name = 'vsnip'}}),
+    sources = cmp.config.sources(
+        {
+            {name = 'nvim_lsp'},
+            {name = 'nvim_lsp_signature_help'},
+            {name = 'vsnip'},
+            {name = 'buffer'}
+        },
+        {
+            {name = 'path'}
+        }
+    ),
     sorting = {
         comparators = {
             cmp.config.compare.offset,
