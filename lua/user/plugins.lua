@@ -110,6 +110,9 @@ return packer.startup(function(use)
     use 'rust-lang/rust.vim'
     use 'simrat39/rust-tools.nvim'
 
+    -- Haskell
+    use 'MrcJkb/haskell-tools.nvim'
+
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
     if PACKER_BOOTSTRAP then require("packer").sync() end
